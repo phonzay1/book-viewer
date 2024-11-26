@@ -1,5 +1,9 @@
+import {
+  Routes, Route
+} from 'react-router-dom';
 import { MainProps } from "../types";
 import Home from "./Home";
+import Chapter from './Chapter';
 
 function Main({ title, chapters }: MainProps): JSX.Element {
   return (
@@ -9,7 +13,10 @@ function Main({ title, chapters }: MainProps): JSX.Element {
         <h2>by Sir Arthur Conan Doyle</h2>
       </div>
       <div className="content">
-        <Home chapters={chapters}/>
+        <Routes>
+          <Route path="/" element={<Home chapters={chapters}/>} />
+          <Route path="/chapters/:name" element={<Chapter />} />
+        </Routes>
       </div>
     </div>
   )

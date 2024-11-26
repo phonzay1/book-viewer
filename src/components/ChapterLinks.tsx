@@ -1,9 +1,23 @@
+import {
+  Link
+} from 'react-router-dom';
 import { ChapterProps, HomeProps } from "../types"
+
+function convertChapterName(chapterName: string): string {
+  const converted = chapterName.toLowerCase().replaceAll(/\s+/g, '-');
+
+  return converted;
+}
 
 function ChapterLink({ number, chapter }: ChapterProps): JSX.Element {
   return (
     <li className="pure-menu-item">
-      <a href="#" className="pure-menu-link">Chapter {number}: {chapter}</a>
+      <Link 
+        to={`/chapters/${convertChapterName(chapter)}`}
+        className="pure-menu-link"
+      >
+        Chapter {number}: {chapter}
+      </Link>
     </li>
   )
 }
