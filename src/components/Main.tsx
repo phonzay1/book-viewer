@@ -15,7 +15,7 @@ function Main({ title, chapters }: MainProps): JSX.Element {
       <div className="content">
         <Routes>
           <Route path="/" element={<Home chapters={chapters}/>} />
-          <Route path="/chapters/:name" element={<Chapter />} />
+          <Route path="/chapters/:name" element={<Chapter chapters={chapters}/>} />
         </Routes>
       </div>
     </div>

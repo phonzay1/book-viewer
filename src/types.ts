@@ -3,6 +3,7 @@ export interface TableOfContents {
   chapters: string[],
 }
 
+// named HomeProps bc of original usage...but used in other components too now
 export interface HomeProps {
   chapters: string[],
 }
