@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { TableOfContents } from "./types";
+import { z } from "zod";
+import { TableOfContents, tocSchema } from "./types";
 import NavBar from "./components/NavBar";
 import Main from "./components/Main";
 
@@ -16,11 +17,14 @@ function App() {
           throw new Error(`Response status: ${response.status}`);
         }
         const json: TableOfContents = await response.json();
+        tocSchema.parse(json);
         setTitle(json.book);
         setChapters(json.chapters);
       } catch (error: unknown) {
         if (error instanceof Error) {
           console.error(error.message);
+        } else if (error instanceof z.ZodError) {
+          console.error("Invalid response data!", { error: error.issues });
         } else {
           throw new Error("Unknown error encountered");
         }
@@ -29,8 +33,6 @@ function App() {
 
     fetchChapters();
   }, [])
-
-  // console.log('chapters: ', chapters);
 
   return (
     <>

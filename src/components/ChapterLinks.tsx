@@ -1,11 +1,8 @@
-import {
-  Link
-} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { ChapterProps, HomeProps } from "../types"
 
 function convertChapterName(chapterName: string): string {
   const converted = chapterName.toLowerCase().replaceAll(/\s+/g, '-');
-
   return converted;
 }
 

@@ -46,13 +46,11 @@ function Chapter({ chapters }: HomeProps): JSX.Element {
     }
 
     fetchChapterText();
-  }, [name])
-
-  // console.log('paragraphs: ', text.split('\n\n'));
+  }, [name, chapters])
 
   return (
     <>
-      <h2>{chapterName}</h2>
+      <h2 className="content-subhead">{chapterName}</h2>
       {text.split('\n\n').map(paragraph => <p>{paragraph}</p>)}
     </>
   )

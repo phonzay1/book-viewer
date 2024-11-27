@@ -1,6 +1,4 @@
-import {
-  Routes, Route
-} from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import { MainProps } from "../types";
 import Home from "./Home";
 import Chapter from './Chapter';
